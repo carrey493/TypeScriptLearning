@@ -93,3 +93,173 @@ let octal : number = 0o744
 let big : bigint = 100n
 ```
 
+##### boolean
+
+```tsx
+let isDone:bollean = false
+```
+
+##### string
+
+```tsx
+let color:string = 'blue'
+color = 'red'
+let fullName:string = 'Bob Bobbington'
+let age:number = 37
+let sentence:string = `hello my name is ${fullName}`
+`I will be ${age+1} years old next month`
+```
+
+##### 字面量
+
+```tsx
+//也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围
+let color:'red'|'blue'
+let num:1|2|3
+```
+
+##### unknown
+
+```tsx
+let notSure:unknown = 4
+```
+
+##### void
+
+```tsx
+let unusable:void = undefined
+```
+
+##### never
+
+```tsx
+function error(message:string):never{
+	throw new Error(message)
+}
+```
+
+##### object
+
+```tsx
+let obj:object = {}
+```
+
+##### array
+
+```tsx
+let list:number[] = [1,2,3]
+let list:Array<number> = [1,2,3]
+```
+
+##### tuple
+
+```tsx
+let x: [string,number]
+x = ['hello',10]
+```
+
+##### enum
+
+```tsx
+enum Color {
+    Red,
+    Green,
+    Blue
+}
+let c:Color = Color.Green
+
+enum Color {
+    Red = 1,
+    Green,
+    Blue
+}
+let c:Color = Color.Green
+
+enum Color {
+    Red = 1,
+    Green = 2,
+    Blue = 4
+}
+let c:Color = Color.Green
+```
+
+##### 类型断言
+
+- 有些情况下，变量的类型对于我们来说是很明确的，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式
+
+  - 第一种
+
+  ```tsx
+  let someValue:unknow = 'this is a string'
+  let strLength:number = (someValue as string).length
+  ```
+
+  - 第二种
+
+  ```tsx
+  let someValue:unknow = 'this is a string'
+  let strLength:number = (<string>someValue).length
+  ```
+
+## 四.编译选项
+
+### 1.自动编译文件
+
+- 编译文件后，使用-w指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译
+- tsc xxx.ts -w
+
+### 2.自动编译整个项目
+
+- 如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。
+
+- 但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件 tsconfig.json
+
+- tsconfig.json是一个JSON文件，添加配置文件后，只需只需tsc命令即可完成对整个项目的编译
+
+- 配置选项
+  - include
+    - 定义希望被编译文件所在的目录
+    
+    - 默认值: ['**/*']
+    
+    - 示例
+      - ```
+        "include":['src/**/*','tests/**/*']
+        ```
+      
+      - 上述示例中，所有src目录和tests目录下的文件都会被编译
+    
+  - exclude
+  
+    - 定义需要排除在外的目录
+    - 默认值:["node_modules", "bower_components". "jspm_packages"]
+    - 示例
+      - "exclude"": ["./src/he1lo/**/*]
+      - 上述示例中，src 下hello目录下的文件都不会被编译
+  
+  - extends
+  
+    - 定义被继承的配置文件
+    - 示例:
+      - "extends ": ". / configs / base"
+      - 上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息
+  
+  - files
+  
+    - 指定被编辑文件的列表，只有需要编译的文件少时才会用到
+    - 示例
+    - ```json
+    "files":[
+    	" core.ts",
+    	"sys.ts",
+    	"types.ts",
+    	"scanner.ts"",
+    	"parser.ts ",
+    	"utilities.tS,
+    	"binder.ts ",
+    	"checker.ts ",
+    	"tsc.ts"
+    ]
+    
+  - 列表中的文件都会被TS编译器所编译
+
