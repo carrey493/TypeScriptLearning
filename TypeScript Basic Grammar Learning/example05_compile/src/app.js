@@ -1,2 +1,2 @@
 console.log('hello world');
-var a = 10;
+let a = 10;

@@ -263,3 +263,62 @@ let c:Color = Color.Green
     
   - 列表中的文件都会被TS编译器所编译
 
+### 3.compilerOptions
+
+- 编译选项是配置文件中非常重要的也比较复杂的配置选项
+
+- 在compilerOptions中包含多个子选项，用来完成对编译的配置
+
+  - 项目配置
+
+    - target
+
+      - 设置ts代码编译的目标脚本
+
+      - 可选值
+
+        - ES3(默认)、ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2020、ESNext
+
+        - 示例
+
+          - ```json
+            "compilerOptions":{
+            	"target":"ES6"
+            }
+            ```
+
+          - 如上设置，我们所编写的代码将会被编译为ES6代码版本的js
+
+    - lib
+
+      - 指定代码运行时所包含的库（宿主环境）
+
+      - 可选值
+
+        - ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2020、ESNext、DOM、WebWorker、ScriptHost
+
+      - 示例
+
+        - ```json
+          "compilerOptions":{
+          	"target":"ES6",
+          	"lib":["ES6","DOM"]
+          }
+          ```
+
+    - module
+
+      - 设置编译后代码使用的模块化系统
+
+      - 可选值
+
+        - CommonJS、UMD、AMD、System、ES2020、ESNext、None
+
+      - 示例
+
+        - ```
+          "compilerOptions":{
+          	"module":"CommonJS"
+          }
+          ```
+

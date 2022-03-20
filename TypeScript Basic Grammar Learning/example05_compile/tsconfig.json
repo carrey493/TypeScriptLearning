@@ -14,5 +14,18 @@
   ],
   "exclude": [
     "./src/hello/**/*"
-  ]
+  ],
+  "compilerOptions": {
+    //target 用来指定JS编译的版本
+    "target": "es2015",
+    //module 指定要使用的模块化规范
+    "module": "system",
+    //lib用来指定项目中要使用的库
+    // "lib": ["ES2016","DOM"]
+    //outDir 用来指定编译后文件所在的目录
+    "outDir": "./dist",
+    //将代码合并为一个文件
+    //设置outFile后 所有的全局作用域中的代码会合并到同一个文件中
+    "outFile": "./dist/merge.js"
+  }
 }
