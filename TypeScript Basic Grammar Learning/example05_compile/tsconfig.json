@@ -10,11 +10,14 @@
             *  表示任意文件        
   */
   "include": [
-    "./src/**/*"
+    "./src/**/*" //任意目录任意文件
   ],
   "exclude": [
     "./src/hello/**/*"
   ],
+  /* 
+    compilerOptions 编译器选项
+  */
   "compilerOptions": {
     //target 用来指定JS编译的版本
     "target": "es2015",
@@ -26,6 +29,11 @@
     "outDir": "./dist",
     //将代码合并为一个文件
     //设置outFile后 所有的全局作用域中的代码会合并到同一个文件中
-    "outFile": "./dist/merge.js"
+    "outFile": "./dist/merge.js",
+    "allowJs": false, //是否对js文件进行编译 默认是false
+    "checkJs": false, //是否检查js代码是否符合语法规范
+    "removeComments": false, //是否移除注释
+    "noEmit": false, //不生成编译后的文件
+    "noEmitOnError": false //当有错误时不生成编译后的文件
   }
 }
