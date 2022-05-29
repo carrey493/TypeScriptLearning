@@ -394,27 +394,27 @@ let c:Color = Color.Green
       - 是否生成sourceMap
       - 默认值:false
 
-   - alwaysStrict
+    - alwaysStrict
   
       - 是否生成sourceMap用来设置编译后的文件是否使用严格模式，默认是false
       - 默认值:false
 
-   - noImplicitAny
+    - noImplicitAny
   
       - 不允许声明隐式any
       - 默认值:false
 
-   - noImplicitThis
+    - noImplicitThis
   
       - 不明确不明类型的this
       - 默认值:false
       
-   - strictNullChecks
+    - strictNullChecks
   
       - 严格的检查空值
       - 默认值:false
   
-   - strict
+    - strict
   
       - 所有严格检查的总开关
       - 默认值:false
