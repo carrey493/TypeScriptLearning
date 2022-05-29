@@ -316,7 +316,7 @@ let c:Color = Color.Green
 
       - 示例
 
-        - ```
+        - ```json
           "compilerOptions":{
           	"module":"CommonJS"
           }
@@ -330,7 +330,7 @@ let c:Color = Color.Green
     
       - 示例
     
-        - ```
+        - ```json
           "compilerOptions":{
           	"outDir":"dist"
           }
@@ -344,7 +344,7 @@ let c:Color = Color.Green
     
       - 示例
     
-        - ```
+        - ```json
           "compilerOptions":{
           	"outFile":"dist/app.js"
           }
@@ -356,7 +356,7 @@ let c:Color = Color.Green
     
       - 示例
     
-      - ```
+      - ```json
         "compilerOptions":{
         	"rootDir":"./src"
         }
@@ -372,7 +372,7 @@ let c:Color = Color.Green
     
       - 示例
     
-        - ```
+        - ```json
           "compilerOptions":{
           	"allowJs":true,
           	"checkJs":true
@@ -392,5 +392,30 @@ let c:Color = Color.Green
     - sourceMap
     
       - 是否生成sourceMap
+      - 默认值:false
+
+   - alwaysStrict
+  
+      - 是否生成sourceMap用来设置编译后的文件是否使用严格模式，默认是false
+      - 默认值:false
+
+   - noImplicitAny
+  
+      - 不允许声明隐式any
+      - 默认值:false
+
+   - noImplicitThis
+  
+      - 不明确不明类型的this
+      - 默认值:false
+      
+   - strictNullChecks
+  
+      - 严格的检查空值
+      - 默认值:false
+  
+   - strict
+  
+      - 所有严格检查的总开关
       - 默认值:false
 
