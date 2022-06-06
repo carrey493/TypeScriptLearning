@@ -248,7 +248,7 @@ let c:Color = Color.Green
   
     - 指定被编辑文件的列表，只有需要编译的文件少时才会用到
     - 示例
-    - ```json
+    ```json
     "files":[
     	" core.ts",
     	"sys.ts",
@@ -260,7 +260,7 @@ let c:Color = Color.Green
     	"checker.ts ",
     	"tsc.ts"
     ]
-    
+    ```
   - 列表中的文件都会被TS编译器所编译
 
 ### 3.compilerOptions
@@ -418,4 +418,72 @@ let c:Color = Color.Green
   
       - 所有严格检查的总开关
       - 默认值:false
+### 4、webpack
+- 通常情况下，实际开发中我们都需要使用构建工具对代码进行打包，TS同样也可以结合构建工具一起使用，下边以webpack为例介绍一下如何结合构建工具使用TS。
+- 步骤:
+  - 1.初始化项目
+    - 进入项目根目录,执行命令npm init -y
+    - 主要作用:创建package.json文件
+  - 2.下载构建工具
+    - npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-p1ugin
+      - 共安装了7个包
+        - webpack
+          - 构建工具webpackm 
+        - webpack-cli
+          - webpack的命令行工具 
+        - webpack-dev-server
+          - webpack的开发服务器
+        - typescript
+          - ts编译器
+        - ts-loader
+          - ts加载器，用于在webpack中编译ts文件
+        - clean-webpack-plugin
+          - webpack中的清除插件，每次构建都会先清除目录
+  - 3.根目录下创建webpack的配置文件webpack.config.js
+  ```js
+  //引入一个包
+  const path = require('path')
+
+  //webpack 中所有的配置信息都应该写在module.exports中
+  module.exports = {
+      //指定入口文件
+      entry: './src/index.ts',
+      //指定打包文件所在目录
+      output: {
+          path: path.resolve(__dirname, 'dist'),
+          //打包后文件名
+          filename: 'bundle.js'
+      },
+      //指定webpack打包时要使用的模块
+      module: {
+          //指定要加载的规则
+          rules: [
+              {
+                  //test指定规则生效的文件
+                  test: /\.ts$/,
+                  //要使用的loader
+                  use: 'ts-loader',
+                  //要排除的文件
+                  exclude: /node_modules/
+              }
+          ]
+      }
+  }
+  ```
+  - 4.根目录下创建ts的编译文件tscongig.json
+  ```json
+  {
+    "compilerOptions": {
+        "module": "ES2015",
+        "target": "ES2015",
+        "sourceMap": false,
+        "strict": true
+    }
+  }
+  ```
+
+  - 5.package.json文件下配置打包命令
+  ```json
+  "build": "webpack --mode development"
+  ```
 
