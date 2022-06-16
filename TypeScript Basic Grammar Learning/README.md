@@ -487,3 +487,28 @@ let c:Color = Color.Green
   "build": "webpack --mode development"
   ```
 
+  - 6.安装几个插件
+    - html-webpack-plugin:配置项目自定生成一个html文件
+    - webpack-dev-server:配置start命令,可以自动打开html文件,并且是热更新动态变化
+    - clean-webpack-plugin:在编译生成dist文件夹之前先清除原本的dist文件夹
+
+  在webpack.config.js配置webpack的插件
+  ```js
+    plugins: [
+        new HTMLWebapckPlugin({
+          //自定义生成需要展示的html文件指定其对应的路径
+          // title:'自定义title'
+          template: './src/index.html'
+        }),
+        new CleanWebpackPlugin()
+    ],
+    //用来配置模块
+    resolve: {
+        extensions: ['.ts', '.js']//ts,js文件都可以作为模块导出
+    }
+  ```
+  在package.json配置start命令,可以自动打开html文件,并且是热更新动态变化
+  ```json
+  "start": "webpack serve --open --mode development"
+  ```
+

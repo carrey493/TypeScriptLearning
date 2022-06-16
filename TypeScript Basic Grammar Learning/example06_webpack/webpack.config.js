@@ -1,5 +1,7 @@
 //引入一个包
 const path = require('path')
+const HTMLWebapckPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 //webpack 中所有的配置信息都应该写在module.exports中
 module.exports = {
@@ -24,5 +26,17 @@ module.exports = {
                 exclude: /node_modules/
             }
         ]
+    },
+    //配置webpack的插件
+    plugins: [
+        new HTMLWebapckPlugin({
+            // title:'自定义title'
+            template: './src/index.html'
+        }),
+        new CleanWebpackPlugin()
+    ],
+    //用来配置模块
+    resolve: {
+        extensions: ['.ts', '.js']
     }
 }
